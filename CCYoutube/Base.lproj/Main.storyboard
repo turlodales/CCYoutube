@@ -116,23 +116,33 @@
                                     <outlet property="delegate" destination="8MM-DA-tpr" id="Z5z-kd-j1w"/>
                                 </connections>
                             </tableView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="06E-yO-d4P">
-                                <rect key="frame" x="42" y="76" width="291" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search videos..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="06E-yO-d4P">
+                                <rect key="frame" x="19" y="76" width="291" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pr4-pC-pT7">
+                                <rect key="frame" x="318" y="74" width="51" height="30"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="searchAction:" destination="8MM-DA-tpr" eventType="touchUpInside" id="Xqr-F1-byP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="searchButton" destination="Pr4-pC-pT7" id="zL0-1g-mCc"/>
                         <outlet property="searchTableView" destination="5Xv-tz-804" id="ezJ-WI-bgZ"/>
+                        <outlet property="searchTextField" destination="06E-yO-d4P" id="riD-91-E4V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5rF-hi-64Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1575" y="121.47887323943662"/>
+            <point key="canvasLocation" x="1573.5999999999999" y="120.98950524737631"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="U2v-zQ-ZII">

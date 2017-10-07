@@ -28,13 +28,14 @@
     _searchTableView.delegate = self;
     _searchTableView.dataSource = self;
     
+    
+    [_searchButton setImage:[IonIcons imageWithIcon:ion_ios_search iconColor:[UIColor greenColor] iconSize:60.0f imageSize:CGSizeMake(10.0,10.0)] forState:UIControlStateNormal];
+    
     //Youtube Service Object
     self.youtubeService = [[GTLRYouTubeService alloc] init];
     //self.youtubeService.shouldFetchNextPages = true;
     self.youtubeService.authorizer = _userObj.authentication.fetcherAuthorizer;
     [_searchTableView registerNib:[UINib nibWithNibName:@"SearchTableViewCell" bundle:nil] forCellReuseIdentifier:@"SearchCell"];
-    
-    [self fetchVideoList];
     
 }
 
@@ -143,10 +144,10 @@
 #pragma mark - User-defined methods -
 
 //Gets the videoIds of first 20 videos from the search term.
--(void)fetchVideoList
+-(void)fetchVideoList:(NSString *)searchTerm
 {
     GTLRYouTubeQuery_SearchList *searchList = [GTLRYouTubeQuery_SearchList queryWithPart:@"snippet"];
-    searchList.q = @"sumo";
+    searchList.q = searchTerm;
     
     searchList.maxResults = 20;
     
@@ -213,4 +214,8 @@
 }
 */
 
+- (IBAction)searchAction:(id)sender {
+    self.videoSearchArray = [[NSMutableArray alloc] init];
+    [self fetchVideoList: self.searchTextField.text];
+}
 @end

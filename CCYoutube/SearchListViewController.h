@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Google/SignIn.h>
 #import <GTLRYouTube.h>
+#import <IonIcons.h>
 
 @interface SearchListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
@@ -17,7 +18,10 @@
 @property (nonatomic, strong) GTLRYouTubeService *youtubeService;
 @property (nonatomic, strong) GIDGoogleUser *userObj;
 
+@property (strong, nonatomic) IBOutlet UITextField *searchTextField;
 
+@property (strong, nonatomic) IBOutlet UIButton *searchButton;
 
+- (IBAction)searchAction:(id)sender;
 
 @end
