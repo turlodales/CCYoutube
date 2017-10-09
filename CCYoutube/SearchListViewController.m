@@ -245,7 +245,10 @@
 */
 
 - (IBAction)searchAction:(id)sender {
-    self.videoSearchArray = [[NSMutableArray alloc] init];
-    [self fetchVideoList: self.searchTextField.text];
+    if (self.searchTextField.text > 0) {
+        self.videoSearchArray = [[NSMutableArray alloc] init];
+        [self fetchVideoList: self.searchTextField.text];
+    }
+    
 }
 @end
