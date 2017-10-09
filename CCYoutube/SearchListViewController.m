@@ -62,7 +62,7 @@
     searchCell.layer.shadowOffset = CGSizeMake(1, 0);
     searchCell.layer.shadowColor = [[UIColor blackColor] CGColor];
     searchCell.layer.shadowRadius = 5;
-    searchCell.layer.shadowOpacity = 0.25;
+    searchCell.layer.shadowOpacity = 0.20;
     
     CGRect shadowFrame = searchCell.layer.bounds;
     CGPathRef shadowPath = [UIBezierPath bezierPathWithRect:shadowFrame].CGPath;
@@ -75,22 +75,18 @@
     //Added Image
     NSURL *imageUrl = [NSURL URLWithString:videoDetails.videoThumbnail];
     NSData *imgData = [NSData dataWithContentsOfURL:imageUrl];
-    [searchCell.thumbnailImage setTag:2233];
+    [searchCell.thumbnailImage setImage:[UIImage imageWithData:imgData]];
     searchCell.thumbnailImage.backgroundColor = [UIColor clearColor];
     searchCell.thumbnailImage.tintColor = [UIColor clearColor];
     searchCell.thumbnailImage.layer.cornerRadius = 15.0f;
     searchCell.thumbnailImage.clipsToBounds = true;
-    
-    UIImageView *tnImage = [searchCell viewWithTag:2233];
-    [tnImage setImage:[UIImage imageWithData:imgData]];
-    
-    
+ 
     //Add Title
     searchCell.titleText.text = videoDetails.videoTitle;
-    CGRect titleFrameRect = searchCell.titleText.frame;
-    titleFrameRect.origin.x = 1.0;
-    titleFrameRect.origin.y = (searchCell.bounds.size.height) - (1.25*searchCell.bounds.size.height);
-    searchCell.titleText.frame = titleFrameRect;
+    //CGRect titleFrameRect = searchCell.titleText.frame;
+    //titleFrameRect.origin.x = 1.0;
+    //titleFrameRect.origin.y = (searchCell.bounds.size.height) - (1.25*searchCell.bounds.size.height);
+    //searchCell.titleText.frame = titleFrameRect;
     [searchCell.contentView addSubview:searchCell.titleText];
     
     
@@ -178,6 +174,7 @@
         else
         {
             NSLog(@"slist is empty");
+            self.searchTableView.hidden = true;
         }
        
     }

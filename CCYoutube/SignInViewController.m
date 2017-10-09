@@ -32,7 +32,8 @@
     //Add google+ button to view
     self.signOnButton = [[GIDSignInButton alloc] init];
     //[self.view addSubview:self.signOnButton];
-    
+
+    self.na
     
     //Youtube Service Object
     self.youtubeService = [[GTLRYouTubeService alloc] init];
