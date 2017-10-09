@@ -25,7 +25,7 @@
     [super viewDidLoad];
      CAGradientLayer *gLayer = [CAGradientLayer layer];
     gLayer.frame = self.view.bounds;
-    gLayer.colors = @[(id)[UIColor whiteColor].CGColor, (id)[UIColor blackColor]];
+    gLayer.colors = @[(id)[UIColor whiteColor].CGColor, (id)[UIColor blueColor].CGColor];
     
     [self.view.layer insertSublayer:gLayer atIndex:0];
     _videoSearchArray = [[NSMutableArray alloc]init];

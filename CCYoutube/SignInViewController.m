@@ -24,7 +24,7 @@
     
     CAGradientLayer *gLayer = [CAGradientLayer layer];
     gLayer.frame = self.view.bounds;
-    gLayer.colors = @[(id)[UIColor whiteColor].CGColor, (id)[UIColor blueColor]];
+    gLayer.colors = @[(id)[UIColor blackColor].CGColor, (id)[UIColor blueColor].CGColor];
     
     [self.view.layer insertSublayer:gLayer atIndex:0];
     
