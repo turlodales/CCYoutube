@@ -23,7 +23,7 @@
 * https://developers.google.com/youtube/v3/quickstart/ios
 
 
-* Used YouTube Helper to play the video: no other player used ( so had to add indicator with popup to get fullscreen)
+* Used YouTube Helper to play the video: no other player used ( so had to add indicator with popup to get fullscreen "underhanded")
 * https://developers.google.com/youtube/v3/guides/ios_youtube_helper
 
 * Use IonIcons for icons
