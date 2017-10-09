@@ -65,4 +65,18 @@
     [self.mainPlayerView playVideo];
 }
 
+- (void)playerView:(nonnull YTPlayerView *)playerView didChangeToState:(YTPlayerState)state
+{
+    switch (state) {
+        case kYTPlayerStateEnded:
+            [playerView stopVideo];
+            [playerView removeWebView];
+            playerView = nil;
+            break;
+            
+        default:
+            break;
+    }
+}
+
 @end
