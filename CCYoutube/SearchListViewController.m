@@ -245,7 +245,7 @@
 */
 
 - (IBAction)searchAction:(id)sender {
-    if (self.searchTextField.text > 0) {
+    if (self.searchTextField.text.length > 0) {
         self.videoSearchArray = [[NSMutableArray alloc] init];
         [self fetchVideoList: self.searchTextField.text];
     }
