@@ -12,6 +12,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    _overlayView.delegate = self;
         
 }
 
@@ -20,5 +21,19 @@
 
     // Configure the view for the selected state
 }
+
+//-(void)prepareForReuse
+//{
+//    [super prepareForReuse];
+//
+//}
+
+- (void)playerViewDidBecomeReady:(nonnull YTPlayerView *)playerView
+{
+
+    [self.overlayView setHidden:false];
+    [self.overlayView playVideo];
+}
+
 
 @end

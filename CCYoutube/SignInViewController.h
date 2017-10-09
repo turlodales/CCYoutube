@@ -14,6 +14,8 @@
 
 @property (nonatomic, strong) IBOutlet GIDSignInButton *signOnButton;
 @property (nonatomic, strong) GTLRYouTubeService *youtubeService;
+@property (strong, nonatomic) IBOutlet UILabel *greetingLabel;
+@property (strong, nonatomic) IBOutlet UILabel *helloLabel;
 
 @end
 

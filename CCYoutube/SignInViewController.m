@@ -12,6 +12,7 @@
 @interface SignInViewController ()
 {
     SearchListViewController *searchViewController;
+    CAGradientLayer *gLayer;
 }
 @end
 
@@ -22,11 +23,13 @@
     
     searchViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchListViewController"];
     
-    CAGradientLayer *gLayer = [CAGradientLayer layer];
+    gLayer = [CAGradientLayer layer];
     gLayer.frame = self.view.bounds;
-    gLayer.colors = @[(id)[UIColor blackColor].CGColor, (id)[UIColor blueColor].CGColor];
+    gLayer.colors = @[(id)[UIColor grayColor].CGColor, (id)[UIColor grayColor].CGColor,(id)[UIColor whiteColor].CGColor,(id)[UIColor colorWithRed:135 green:206 blue:250 alpha:0].CGColor];
     
     [self.view.layer insertSublayer:gLayer atIndex:0];
+    
+    _helloLabel = [IonIcons labelWithIcon:ion_ionic size:30.0f color:[UIColor whiteColor]];
     
     // Setting up Google Sign-In
     GIDSignIn *signIn = [GIDSignIn sharedInstance];
@@ -48,11 +51,17 @@
     
 }
 
+- (void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    gLayer.frame = self.view.bounds;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 #pragma mark - Google SignIn Delegate methods -
 
@@ -72,6 +81,15 @@
         
         
     }
+}
+
+#pragma mark - Font change - 
+
+- (UIFont *) ionicFont : (UILabel *)label
+{
+    UIFont *ionicFont = [IonIcons fontWithSize:30.0f];
+    
+    return ionicFont;
 }
 
 #pragma mark - User-defined methods -

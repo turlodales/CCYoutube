@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "YTPlayerView.h"
 
-@interface SearchTableViewCell : UITableViewCell
+@interface SearchTableViewCell : UITableViewCell<YTPlayerViewDelegate>
 
-@property (weak, nonatomic) YTPlayerView * overlayView;
+
+@property (strong, nonatomic) IBOutlet YTPlayerView *overlayView;
 
 @property (weak, nonatomic) IBOutlet UILabel *titleText;
 
@@ -19,5 +20,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *descriptionText;
 
+@property (strong, nonatomic) NSString *videoId;
 
 @end

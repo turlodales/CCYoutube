@@ -16,17 +16,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    NSDictionary *playerVars = @{@"playsinline" : @0,};
+    _mainPlayerView.delegate = self;
+    
+    UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(50.0, 10.0, 30.0, 30.0)];
+    activity.center = self.view.center;
+    activity.hidesWhenStopped = true;
+    activity.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    [activity startAnimating];
+    
+    [self.view addSubview:activity];
+    
+    NSDictionary *playerVars = @{@"playsinline" : @0};
     if (_videoId!= nil) {
         [self.mainPlayerView loadWithVideoId:_videoId playerVars:playerVars];
         
         
-       // [self.mainPlayerView cueVideoById:_videoId startSeconds:0.0 suggestedQuality:kYTPlaybackQualityAuto];
+        
     }
     else
     {
-        [self.mainPlayerView cueVideoById:@"M7lc1UVf-VE" startSeconds:0.0 suggestedQuality:kYTPlaybackQualityAuto];
+        [self.mainPlayerView loadWithVideoId:@"M7lc1UVf-VE" playerVars:playerVars];
     }
     
 }
@@ -46,19 +55,13 @@
 }
 */
 
-- (IBAction)playVideo:(id)sender {
-    [self.mainPlayerView playVideo];
-}
-
-- (IBAction)stopVideo:(id)sender {
-    [self.mainPlayerView stopVideo];
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-}
 
 #pragma mark - YTPlayer Delegate methods - 
 
 - (void)playerViewDidBecomeReady:(nonnull YTPlayerView *)playerView
 {
+    
+    _mainPlayerView.hidden = true;
     [self.mainPlayerView playVideo];
 }
 

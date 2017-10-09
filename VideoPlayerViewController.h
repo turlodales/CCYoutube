@@ -9,14 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "YTPlayerView.h"
 
+
 @interface VideoPlayerViewController : UIViewController <YTPlayerViewDelegate>
 @property (strong, nonatomic) IBOutlet YTPlayerView *mainPlayerView;
-
 @property (nonatomic, strong) NSString *videoId;
-
-- (IBAction)playVideo:(id)sender;
-
-- (IBAction)stopVideo:(id)sender;
 
 
 @end

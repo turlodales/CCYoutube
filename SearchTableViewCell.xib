@@ -36,9 +36,9 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lrZ-6K-BkJ">
+                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lrZ-6K-BkJ" customClass="YTPlayerView">
                         <rect key="frame" x="0.0" y="0.0" width="250" height="260"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </subviews>
@@ -46,6 +46,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="descriptionText" destination="TJN-FA-HU3" id="21Y-RP-nfZ"/>
+                <outlet property="overlayView" destination="lrZ-6K-BkJ" id="mBG-Nw-can"/>
                 <outlet property="thumbnailImage" destination="0cu-Fl-dP4" id="Pmv-IX-GYI"/>
                 <outlet property="titleText" destination="3Hx-8x-Q8C" id="oA9-Vi-tvw"/>
             </connections>

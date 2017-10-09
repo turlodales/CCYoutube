@@ -11,10 +11,12 @@
 #import "SearchTableViewCell.h"
 #import "VideoPlayerViewController.h"
 
-@interface SearchListViewController ()
+@interface SearchListViewController ()<UIPopoverPresentationControllerDelegate>
 {
+    CAGradientLayer *gLayer;
     VideoDetails *vDetails;
     VideoPlayerViewController *vPlayer;
+    UIPopoverPresentationController *popController;
 }
 
 @end
@@ -23,11 +25,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     CAGradientLayer *gLayer = [CAGradientLayer layer];
+    gLayer = [CAGradientLayer layer];
     gLayer.frame = self.view.bounds;
-    gLayer.colors = @[(id)[UIColor whiteColor].CGColor, (id)[UIColor blueColor].CGColor];
+    gLayer.colors = @[(id)[UIColor grayColor].CGColor, (id)[UIColor grayColor].CGColor,(id)[UIColor whiteColor].CGColor,(id)[UIColor colorWithRed:135 green:206 blue:250 alpha:0].CGColor];
     
     [self.view.layer insertSublayer:gLayer atIndex:0];
+    
+    
     _videoSearchArray = [[NSMutableArray alloc]init];
     _searchTableView.delegate = self;
     _searchTableView.dataSource = self;
@@ -41,6 +45,11 @@
     self.youtubeService.authorizer = _userObj.authentication.fetcherAuthorizer;
     [_searchTableView registerNib:[UINib nibWithNibName:@"SearchTableViewCell" bundle:nil] forCellReuseIdentifier:@"SearchCell"];
     
+}
+
+- (void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    gLayer.frame = self.view.bounds;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -79,11 +88,10 @@
     //Added Image
     NSURL *imageUrl = [NSURL URLWithString:videoDetails.videoThumbnail];
     NSData *imgData = [NSData dataWithContentsOfURL:imageUrl];
+    searchCell.videoId = videoDetails.videoId;
     [searchCell.thumbnailImage setImage:[UIImage imageWithData:imgData]];
     searchCell.thumbnailImage.backgroundColor = [UIColor clearColor];
     searchCell.thumbnailImage.tintColor = [UIColor clearColor];
-//    searchCell.thumbnailImage.layer.cornerRadius = 20.0f;
-//    searchCell.thumbnailImage.clipsToBounds = true;
  
     //Add Title
     searchCell.titleText.text = videoDetails.videoTitle;
@@ -134,10 +142,34 @@
     // Get the video details and assign to values
     VideoDetails *vidDetails = [self.videoSearchArray objectAtIndex:section];
     vPlayer.videoId = vidDetails.videoId;
-    NSLog(@"Inside did select");
-    [self presentViewController:vPlayer animated:YES completion:nil];
+
+    
+    vPlayer.modalPresentationStyle = UIModalPresentationPopover;
+    popController = [vPlayer popoverPresentationController];
+    popController.permittedArrowDirections = UIPopoverArrowDirectionAny;
+    vPlayer.preferredContentSize = CGSizeMake(0, 0);
+    popController.delegate = self;
+    
+    
+    [self presentViewController:vPlayer animated:YES completion:^{
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }];
+    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    popController.sourceView = ((SearchTableViewCell *)cell);
+    popController.sourceRect = ((SearchTableViewCell *)cell).frame;
+    
+   
     
 }
+
+#pragma mark - UIPopupPresentationController Delegates
+
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller traitCollection:(nonnull UITraitCollection *)traitCollection
+{
+    return UIModalPresentationCurrentContext;
+}
+
 
 #pragma mark - User-defined methods -
 
