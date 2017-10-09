@@ -22,11 +22,7 @@
     // Configure the view for the selected state
 }
 
-//-(void)prepareForReuse
-//{
-//    [super prepareForReuse];
-//
-//}
+#pragma mark - YTPlayer Delgate Methods -
 
 - (void)playerViewDidBecomeReady:(nonnull YTPlayerView *)playerView
 {
@@ -34,6 +30,8 @@
     [self.overlayView setHidden:false];
     [self.overlayView playVideo];
 }
+
+
 
 
 @end

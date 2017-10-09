@@ -158,9 +158,6 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     popController.sourceView = ((SearchTableViewCell *)cell);
     popController.sourceRect = ((SearchTableViewCell *)cell).frame;
-    
-   
-    
 }
 
 #pragma mark - UIPopupPresentationController Delegates

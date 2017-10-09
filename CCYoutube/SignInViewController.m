@@ -62,7 +62,6 @@
 }
 
 
-
 #pragma mark - Google SignIn Delegate methods -
 
 - (void)signIn:(GIDSignIn *)signIn didSignInForUser:(GIDGoogleUser *)user withError:(NSError *)error
