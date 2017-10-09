@@ -22,18 +22,26 @@
     
     searchViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchListViewController"];
     
+    CAGradientLayer *gLayer = [CAGradientLayer layer];
+    gLayer.frame = self.view.bounds;
+    gLayer.colors = @[(id)[UIColor whiteColor].CGColor, (id)[UIColor blueColor]];
+    
+    [self.view.layer insertSublayer:gLayer atIndex:0];
+    
     // Setting up Google Sign-In
     GIDSignIn *signIn = [GIDSignIn sharedInstance];
     signIn.delegate = self;
     signIn.uiDelegate = self;
     signIn.scopes = [NSArray arrayWithObjects:kGTLRAuthScopeYouTubeReadonly, nil];
+    
     //[signIn signInSilently];
     
     //Add google+ button to view
     self.signOnButton = [[GIDSignInButton alloc] init];
+    
     //[self.view addSubview:self.signOnButton];
 
-    self.na
+    self.navigationController.navigationBar.hidden = true;
     
     //Youtube Service Object
     self.youtubeService = [[GTLRYouTubeService alloc] init];
@@ -59,7 +67,8 @@
         self.youtubeService.authorizer = user.authentication.fetcherAuthorizer;
     
         searchViewController.userObj = user;
-        [self.navigationController presentViewController:searchViewController animated:YES completion:nil];
+        [self.navigationController pushViewController:searchViewController animated:YES];
+        //[self.navigationController presentViewController:searchViewController animated:YES completion:nil];
         
         
     }

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "YTPlayerView.h"
 
-@interface VideoPlayerViewController : UIViewController
+@interface VideoPlayerViewController : UIViewController <YTPlayerViewDelegate>
 @property (strong, nonatomic) IBOutlet YTPlayerView *mainPlayerView;
 
 @property (nonatomic, strong) NSString *videoId;

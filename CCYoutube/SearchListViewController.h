@@ -10,13 +10,16 @@
 #import <Google/SignIn.h>
 #import <GTLRYouTube.h>
 #import <IonIcons.h>
+#import "YTPlayerView.h"
 
-@interface SearchListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface SearchListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,YTPlayerViewDelegate>
 
-@property(nonatomic, strong) NSMutableArray *videoSearchArray;
-@property (weak, nonatomic) IBOutlet UITableView *searchTableView;
+@property (nonatomic, strong) NSMutableArray *videoSearchArray;
 @property (nonatomic, strong) GTLRYouTubeService *youtubeService;
 @property (nonatomic, strong) GIDGoogleUser *userObj;
+@property (nonatomic, strong) NSIndexPath *lastSelected;
+
+@property (weak, nonatomic) IBOutlet UITableView *searchTableView;
 
 @property (strong, nonatomic) IBOutlet UITextField *searchTextField;
 

@@ -23,13 +23,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+     CAGradientLayer *gLayer = [CAGradientLayer layer];
+    gLayer.frame = self.view.bounds;
+    gLayer.colors = @[(id)[UIColor whiteColor].CGColor, (id)[UIColor blackColor]];
     
+    [self.view.layer insertSublayer:gLayer atIndex:0];
     _videoSearchArray = [[NSMutableArray alloc]init];
     _searchTableView.delegate = self;
     _searchTableView.dataSource = self;
-    
-    
-    [_searchButton setImage:[IonIcons imageWithIcon:ion_ios_search iconColor:[UIColor greenColor] iconSize:60.0f imageSize:CGSizeMake(10.0,10.0)] forState:UIControlStateNormal];
+   
+  
+    [_searchButton setImage:[IonIcons imageWithIcon:ion_ios_search_strong iconColor:[UIColor blackColor] iconSize:40.0f imageSize:CGSizeMake(40.0,40.0)] forState:UIControlStateNormal];
     
     //Youtube Service Object
     self.youtubeService = [[GTLRYouTubeService alloc] init];
@@ -78,15 +82,11 @@
     [searchCell.thumbnailImage setImage:[UIImage imageWithData:imgData]];
     searchCell.thumbnailImage.backgroundColor = [UIColor clearColor];
     searchCell.thumbnailImage.tintColor = [UIColor clearColor];
-    searchCell.thumbnailImage.layer.cornerRadius = 15.0f;
-    searchCell.thumbnailImage.clipsToBounds = true;
+//    searchCell.thumbnailImage.layer.cornerRadius = 20.0f;
+//    searchCell.thumbnailImage.clipsToBounds = true;
  
     //Add Title
     searchCell.titleText.text = videoDetails.videoTitle;
-    //CGRect titleFrameRect = searchCell.titleText.frame;
-    //titleFrameRect.origin.x = 1.0;
-    //titleFrameRect.origin.y = (searchCell.bounds.size.height) - (1.25*searchCell.bounds.size.height);
-    //searchCell.titleText.frame = titleFrameRect;
     [searchCell.contentView addSubview:searchCell.titleText];
     
     
@@ -94,6 +94,8 @@
     searchCell.descriptionText.text = videoDetails.videoDescription;
     [searchCell.contentView addSubview:searchCell.descriptionText];
     
+    searchCell.layer.cornerRadius = 20.0f;
+    searchCell.layer.masksToBounds = YES;
     
     //Autoplay on focus (like tumblr)
     
@@ -174,7 +176,6 @@
         else
         {
             NSLog(@"slist is empty");
-            self.searchTableView.hidden = true;
         }
        
     }

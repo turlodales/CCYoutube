@@ -17,9 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    NSDictionary *playerVars = @{@"playsinline" : @1,};
+    NSDictionary *playerVars = @{@"playsinline" : @0,};
     if (_videoId!= nil) {
         [self.mainPlayerView loadWithVideoId:_videoId playerVars:playerVars];
+        
         
        // [self.mainPlayerView cueVideoById:_videoId startSeconds:0.0 suggestedQuality:kYTPlaybackQualityAuto];
     }
@@ -53,4 +54,12 @@
     [self.mainPlayerView stopVideo];
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
+
+#pragma mark - YTPlayer Delegate methods - 
+
+- (void)playerViewDidBecomeReady:(nonnull YTPlayerView *)playerView
+{
+    [self.mainPlayerView playVideo];
+}
+
 @end
