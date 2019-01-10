@@ -32,5 +32,5 @@
 
 
 *Bonus
-* Implement App Store’s animation
+* Implementing App Store’s animation
 
